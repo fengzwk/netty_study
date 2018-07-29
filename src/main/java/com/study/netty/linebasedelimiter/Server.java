@@ -1,4 +1,4 @@
-package com.study.netty.heartbeat;
+package com.study.netty.linebasedelimiter;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -15,9 +15,9 @@ public class Server {
         ServerBootstrap bootstrap = new ServerBootstrap();
         bootstrap.group(parent,child)
                  .channel(NioServerSocketChannel.class)
-                 .childHandler(new ServerHearBeatInitialization());
+                 .childHandler(new LineBasedHandlerInitializer());
 
-        ChannelFuture future = bootstrap.bind(8899).sync();
+        ChannelFuture future = bootstrap.bind(8890).sync();
         future.channel().closeFuture().sync();
     }
 }

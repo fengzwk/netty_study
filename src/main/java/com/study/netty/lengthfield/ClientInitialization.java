@@ -1,4 +1,4 @@
-package com.study.netty.fixlengthhandler;
+package com.study.netty.lengthfield;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;

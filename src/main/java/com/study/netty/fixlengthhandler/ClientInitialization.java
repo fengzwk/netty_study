@@ -1,4 +1,4 @@
-package com.study.netty.delimiter;
+package com.study.netty.fixlengthhandler;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;

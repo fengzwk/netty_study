@@ -1,4 +1,4 @@
-package com.study.netty.linebasedelimiter;
+package com.study.netty.delimiter;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -15,9 +15,9 @@ public class Server {
         ServerBootstrap bootstrap = new ServerBootstrap();
         bootstrap.group(parent,child)
                  .channel(NioServerSocketChannel.class)
-                 .childHandler(new LineBasedHandlerInitializer());
+                 .childHandler(new DelimiterBasedHandlerInitializer());
 
-        ChannelFuture future = bootstrap.bind(8890).sync();
+        ChannelFuture future = bootstrap.bind(8891).sync();
         future.channel().closeFuture().sync();
     }
 }

@@ -1,4 +1,4 @@
-package com.study.netty.fixlengthhandler;
+package com.study.netty.lengthfield;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;

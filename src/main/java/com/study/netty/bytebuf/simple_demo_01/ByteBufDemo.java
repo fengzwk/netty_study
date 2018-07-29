@@ -5,6 +5,7 @@ import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufUtil;
 import io.netty.buffer.Unpooled;
 import io.netty.buffer.UnpooledDirectByteBuf;
+import io.netty.util.CharsetUtil;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,8 +16,10 @@ import java.util.List;
 public class ByteBufDemo {
 
     public static void main(String[] args) {
-        ByteBuf byteBuf = Unpooled.buffer();
-        byteBuf.writeBytes("hello".getBytes());
-        System.out.println(ByteBufUtil.hexDump(byteBuf));
+        ByteBuf byteBuf = Unpooled.copiedBuffer("hello world", CharsetUtil.UTF_8);
+        ByteBuf length = Unpooled.copyInt(11);
+
+        System.out.println(byteBuf.readableBytes());
+        System.out.println(length.readableBytes());
     }
 }

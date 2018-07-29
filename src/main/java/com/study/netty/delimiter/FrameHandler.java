@@ -1,12 +1,8 @@
-package com.study.netty.linebasedelimiter;
+package com.study.netty.delimiter;
 
 import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
-import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import io.netty.handler.timeout.IdleStateEvent;
-import io.netty.util.CharsetUtil;
 
 public class FrameHandler extends SimpleChannelInboundHandler<ByteBuf> {
     @Override

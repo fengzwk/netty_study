@@ -1,4 +1,4 @@
-package com.study.netty.linebasedelimiter;
+package com.study.netty.delimiter;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;

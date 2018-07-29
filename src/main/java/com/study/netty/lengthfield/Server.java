@@ -1,4 +1,4 @@
-package com.study.netty.fixlengthhandler;
+package com.study.netty.lengthfield;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -15,9 +15,9 @@ public class Server {
         ServerBootstrap bootstrap = new ServerBootstrap();
         bootstrap.group(parent,child)
                  .channel(NioServerSocketChannel.class)
-                 .childHandler(new FixLengthHandlerInitializer());
+                 .childHandler(new LengthFieldHandlerInitializer());
 
-        ChannelFuture future = bootstrap.bind(8892).sync();
+        ChannelFuture future = bootstrap.bind(8893).sync();
         future.channel().closeFuture().sync();
     }
 }

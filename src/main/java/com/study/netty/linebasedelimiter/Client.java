@@ -1,4 +1,4 @@
-package com.study.netty.heartbeat;
+package com.study.netty.linebasedelimiter;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
@@ -16,7 +16,7 @@ public class Client {
                  .channel(NioSocketChannel.class)
                  .handler(new ClientInitialization());
 
-        ChannelFuture future = bootstrap.connect("localhost", 8899).sync();
+        ChannelFuture future = bootstrap.connect("localhost", 8890).sync();
         future.channel().closeFuture().sync();
     }
 }

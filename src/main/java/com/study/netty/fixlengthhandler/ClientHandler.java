@@ -1,4 +1,4 @@
-package com.study.netty.delimiter;
+package com.study.netty.fixlengthhandler;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -11,9 +11,8 @@ public class ClientHandler extends SimpleChannelInboundHandler<ByteBuf> {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         ByteBuf byteBuf = Unpooled.
-                copiedBuffer("hello world-hello world-hello " +
-                        "world-hello world-hello world-hello world-hello world-", CharsetUtil.UTF_8);
-                                                    //消息要以“-”结尾，不然最后一个消息无法被接收。
+                copiedBuffer("hello worldhello worldhello " +
+                        "worldhello worldhello worldhello worldhello world", CharsetUtil.UTF_8);
         ctx.writeAndFlush(byteBuf);
     }
 
