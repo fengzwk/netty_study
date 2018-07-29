@@ -1,4 +1,4 @@
-package com.study.netty.coder_01;
+package com.study.netty.codec_01;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;

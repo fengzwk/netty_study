@@ -1,4 +1,4 @@
-package com.study.netty.coder_01;
+package com.study.netty.codec_01;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToMessageDecoder;

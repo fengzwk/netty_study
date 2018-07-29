@@ -1,4 +1,4 @@
-package com.study.netty.coder_01;
+package com.study.netty.codec_01;
 
 public enum  DecoderEnum {
     HEAD,
