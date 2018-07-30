@@ -12,7 +12,8 @@ public class LengthFieldHandlerInitializer extends ChannelInitializer<SocketChan
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
-        pipeline.addLast(new LengthFieldBasedFrameDecoder(20,0,4));
+        /**lengthAdjustment 和 initialBytesToStrip尽量加上，避免出现不必要的换行符*/
+        pipeline.addLast(new LengthFieldBasedFrameDecoder(18 ,0,4,-4,4));
         pipeline.addLast(new FrameHandler());
     }
 }

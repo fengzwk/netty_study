@@ -8,6 +8,7 @@ import io.netty.buffer.UnpooledDirectByteBuf;
 import io.netty.util.CharsetUtil;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -19,7 +20,9 @@ public class ByteBufDemo {
         ByteBuf byteBuf = Unpooled.copiedBuffer("hello world", CharsetUtil.UTF_8);
         ByteBuf length = Unpooled.copyInt(11);
 
-        System.out.println(byteBuf.readableBytes());
-        System.out.println(length.readableBytes());
+        ByteBuf slice = byteBuf.slice(0, 20);
+        byte[] bs = new byte[slice.readableBytes()];
+        slice.readBytes(bs);
+        System.out.println(bs);
     }
 }

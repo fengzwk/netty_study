@@ -17,15 +17,19 @@ public class ClientHandler extends SimpleChannelInboundHandler<ByteBuf> {
         Random random = new Random();
 
         for(int i =0; i<7; i++){
-            int num = random.nextInt(200);
-            int length =  String.valueOf(num).length()+11;
+            int num = random.nextInt(200  );
+            int length =  String.valueOf(num).length()+15  ;
             ByteBuf byteBuf = Unpooled.copiedBuffer("hello world"+num, CharsetUtil.UTF_8);
+            ByteBuf duplicate = byteBuf.duplicate();
             ByteBuf lengthbuf = Unpooled.copyInt(length);
 
             CompositeByteBuf byteBufs = Unpooled.compositeBuffer();
             byteBufs.addComponent(true,lengthbuf);
             byteBufs.addComponent(true,byteBuf);
 
+            byte[] bs = new byte[duplicate.readableBytes()];
+            duplicate.readBytes(bs);
+            System.out.println("发出的消息："+new String(bs));
             ctx.writeAndFlush(byteBufs);
         }
     }
