@@ -12,13 +12,13 @@ import io.netty.handler.codec.marshalling.UnmarshallerProvider;
 
 import java.io.Serializable;
 
-public class MarshallingInitializer extends ChannelInitializer<SocketChannel> {
+public class ServerMarshallingInitializer extends ChannelInitializer<SocketChannel> {
 
     private final MarshallerProvider marshallerProvider;
 
     private final UnmarshallerProvider unmarshallerProvider;
 
-    public MarshallingInitializer(MarshallerProvider marshallerProvider, UnmarshallerProvider unmarshallerProvider) {
+    public ServerMarshallingInitializer(MarshallerProvider marshallerProvider, UnmarshallerProvider unmarshallerProvider) {
         this.marshallerProvider = marshallerProvider;
         this.unmarshallerProvider = unmarshallerProvider;
     }
@@ -28,6 +28,7 @@ public class MarshallingInitializer extends ChannelInitializer<SocketChannel> {
         ChannelPipeline pipeline = ch.pipeline();
         pipeline.addLast(new MarshallingEncoder(marshallerProvider));
         pipeline.addLast(new MarshallingDecoder(unmarshallerProvider));
+        pipeline.addLast(new ObjectHandler());
     }
 
     public static final class ObjectHandler extends SimpleChannelInboundHandler<Serializable> {
