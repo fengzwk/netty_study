@@ -5,7 +5,7 @@ import io.netty.buffer.Unpooled;
 import io.netty.channel.FileRegion;
 import io.netty.channel.embedded.EmbeddedChannel;
 import io.netty.util.CharsetUtil;
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 public class TestMain {
 
