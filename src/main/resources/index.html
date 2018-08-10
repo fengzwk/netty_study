@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/jquery/1.4.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        function log(msg) {
+            var log = $('#log')
+            log.append(msg + " \n").scrollTop(log[0].scrollHeight - log.height());
+        }
+
+        $(function(){
+            var url = "ws://localhost:8899/ws";
+            if(!WebSocket){
+                alert("not support websocket")
+            }else{
+                var ws = null;
+                $("#connect").click(function(){
+                    if(ws == null || ws.readyState != 1){
+                        ws = new WebSocket(url);
+
+                        ws.onerror = function(e){
+                            log("Error : "+e.message)
+                        }
+
+                        ws.onopen = function(e){
+                            log("Connect.....")
+                        }
+
+                        ws.onclose = function (e) {
+                            log("disconnect")
+                        }
+
+                        ws.onmessage = function(d){
+                            log("Response : "+d.data)
+                        }
+
+                        $("#send").click(function(){
+                            var msg = $("#msg").val();
+                            $("#msg").val("");
+                            log("Message sent"+ws.send(msg))
+                        })
+                    }else{
+                        log("close connection");
+                        ws.close()
+                    }
+                })
+            }
+        })
+    </script>
+</head>
+<body>
+        <input name="message" id="msg">
+        <input type="button" value="Send" id="send">
+        <br><br/>
+        <textarea id="log"></textarea><br>
+        <input type="button" value="Connect" id="connect"/>
+</body>
+</html>
